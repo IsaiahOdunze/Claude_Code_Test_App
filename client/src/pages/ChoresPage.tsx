@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useChores, useCreateChore, useUpdateChore, useDeleteChore, Chore } from '../hooks/useChores';
+import { useChores, useCreateChore, useUpdateChore, useDeleteChore } from '../hooks/useChores';
+import type { Chore } from '../hooks/useChores';
 import { useUsers } from '../hooks/useUsers';
 import { useCreateAssignment } from '../hooks/useAssignments';
 import ChoreForm from '../components/chores/ChoreForm';

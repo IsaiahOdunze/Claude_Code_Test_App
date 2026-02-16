@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { User } from '../../hooks/useUsers';
+import type { User } from '../../hooks/useUsers';
 
 interface Props {
   user?: User | null;

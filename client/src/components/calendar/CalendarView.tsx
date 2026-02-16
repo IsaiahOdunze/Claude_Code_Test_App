@@ -2,7 +2,8 @@ import { useState, useCallback } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { useAssignments, Assignment } from '../../hooks/useAssignments';
+import { useAssignments } from '../../hooks/useAssignments';
+import type { Assignment } from '../../hooks/useAssignments';
 import ChoreDetailModal from './ChoreDetailModal';
 
 export default function CalendarView() {

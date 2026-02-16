@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Chore } from '../../hooks/useChores';
+import type { Chore } from '../../hooks/useChores';
 import { useUsers } from '../../hooks/useUsers';
 
 interface ChoreFormData {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { format } from 'date-fns';
-import { Assignment } from '../../hooks/useAssignments';
+import type { Assignment } from '../../hooks/useAssignments';
 import { useCreateCompletion, useDeleteCompletion } from '../../hooks/useCompletions';
 import { useAuthStore } from '../../stores/authStore';
 import toast from 'react-hot-toast';

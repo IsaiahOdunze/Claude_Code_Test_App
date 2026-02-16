@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useUsers, useCreateUser, useUpdateUser, useDeleteUser, User } from '../hooks/useUsers';
+import { useUsers, useCreateUser, useUpdateUser, useDeleteUser } from '../hooks/useUsers';
+import type { User } from '../hooks/useUsers';
 import MemberForm from '../components/team/MemberForm';
 import toast from 'react-hot-toast';
 
