@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id           String       @id @default(cuid())
+  email        String       @unique
+  name         String
+  passwordHash String
+  role         String       @default("MEMBER")
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  assignments  Assignment[]
+  completions  Completion[]
+}
+
+model Chore {
+  id             String       @id @default(cuid())
+  title          String
+  description    String?
+  recurrenceType String       @default("NONE")
+  startDate      DateTime
+  endDate        DateTime?
+  autoRotate     Boolean      @default(false)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  assignments    Assignment[]
+}
+
+model Assignment {
+  id            String      @id @default(cuid())
+  choreId       String
+  userId        String
+  assignedDate  DateTime
+  rotationOrder Int?
+  createdAt     DateTime    @default(now())
+  chore         Chore       @relation(fields: [choreId], references: [id], onDelete: Cascade)
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  completion    Completion?
+
+  @@unique([choreId, assignedDate])
+}
+
+model Completion {
+  id           String     @id @default(cuid())
+  assignmentId String     @unique
+  userId       String
+  completedAt  DateTime   @default(now())
+  notes        String?
+  assignment   Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
